@@ -1,7 +1,7 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   # This task replaces this workspace with the launched repo
-  - before: |
+  - command: |
       export REPO=${REPO:-https://github.com/jacobparis/new}
       
       echo "Checking out repository ${REPO}"
@@ -20,9 +20,10 @@ tasks:
       mv launcher_temp/* .
       mv launcher_temp/.* . || rm -rf launcher_temp
       
-  - init: |
+      # Install
       npm config set loglevel silent
       npm config set update-notifier false
-      npm i --silent @serverless/cloud@latest -g && gp sync-done install
+      npm i --silent @serverless/cloud@latest -g
 
-  - command: gp sync-await install && cloud --ide=gitpod --initial
+      # Start command
+      cloud --ide=gitpod --initial
