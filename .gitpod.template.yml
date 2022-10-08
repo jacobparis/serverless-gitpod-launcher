@@ -1,0 +1,3 @@
+tasks:
+  - before: clear; npm config set loglevel silent && npm config set update-notifier false && npm i --silent @serverless/cloud@latest -g
+    command: cloud --ide=gitpod --initial
