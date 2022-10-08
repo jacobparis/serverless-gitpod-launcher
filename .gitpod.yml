@@ -1,0 +1,17 @@
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - before: |
+      # Set up a given REPO repository in gitpod (default to jacobparis/new)
+      # Run composer install if there's a composer.json
+      export REPO=${REPO:-https://github.com/jacobparis/new}
+      echo "Checking out repository ${REPO}"
+      git clone ${REPO} launcher_temp
+
+      # Delete git context for launcher, will be populated with new repo context
+      rm -rf .git
+
+      # Delete .gitpod.yml for launcher
+      rm .gitpod.yml
+      
+      mv launcher_temp/* . # unwrap files
+      mv launcher_temp/.* . || rm -rf launcher_temp # unwrap hidden files & remove containing dir
