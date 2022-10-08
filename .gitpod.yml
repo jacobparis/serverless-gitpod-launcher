@@ -24,6 +24,6 @@ tasks:
   - init: |
       npm config set loglevel silent
       npm config set update-notifier false
-      npm i --silent @serverless/cloud@latest -g
+      npm i --silent @serverless/cloud@latest -g && gp sync-done install
 
-  - command: cloud --ide=gitpod --initial
+  - command: gp sync-await install && cloud --ide=gitpod --initial
