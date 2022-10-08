@@ -12,7 +12,7 @@ This file is single-use and deletes itself when it's done
 
 ## `.gitpod.template.yml`
 
-Becomes the new `.gitpod.yml` for the repo
+Becomes the new `.gitpod.yml` for the repo if it doesn't already have one
 
 ## Examples
 
