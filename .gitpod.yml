@@ -1,9 +1,9 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
+  # This task replaces this workspace with the launched repo
   - before: |
-      # Set up a given REPO repository in gitpod (default to jacobparis/new)
-      # Run composer install if there's a composer.json
       export REPO=${REPO:-https://github.com/jacobparis/new}
+      
       echo "Checking out repository ${REPO}"
       git clone ${REPO} launcher_temp
 
@@ -12,6 +12,13 @@ tasks:
 
       # Delete .gitpod.yml for launcher
       rm .gitpod.yml
+
+      # Inject template yml, this will be overwritten if the launched repo has its own
+      mv .gitpod.template.yml .gitpod.yml
       
-      mv launcher_temp/* . # unwrap files
-      mv launcher_temp/.* . || rm -rf launcher_temp # unwrap hidden files & remove containing dir
+      # unwrap files, hidden files, & remove containing dir
+      mv launcher_temp/* .
+      mv launcher_temp/.* . || rm -rf launcher_temp
+
+  - init: clear; npm config set loglevel silent && npm config set update-notifier false && npm i --silent @serverless/cloud@latest -g
+    command: cloud --ide=gitpod --initial
