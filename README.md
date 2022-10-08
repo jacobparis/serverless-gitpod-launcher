@@ -1,6 +1,6 @@
 # Gitpod Launcher Example
 
-This repository is a proof of concept launching a Gitpod workspace with a pre-determined config. 
+This repository is a proof of concept launching a Gitpod workspace with a pre-determined config. Currently using config from https://github.com/serverless/serverless-cloud-gitpod 
 
 ## `.gitpod.yml` 
 
