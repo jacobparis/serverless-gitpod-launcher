@@ -7,19 +7,18 @@ tasks:
       echo "Checking out repository ${REPO}"
       git clone ${REPO} launcher_temp
 
-      # Delete git context for launcher, will be populated with new repo context
-      rm -rf .git
-
       # Delete .gitpod.yml for launcher
       rm .gitpod.yml
 
       # Inject template yml, this will be overwritten if the launched repo has its own
       mv .gitpod.template.yml .gitpod.yml
       
+      # Delete git context for launcher, will be populated with new repo context
+      # rm -rf .git
+      
       # unwrap files, hidden files, & remove containing dir
       mv launcher_temp/* .
       mv launcher_temp/.* . || rm -rf launcher_temp
-      
       
   - init: |
       npm config set loglevel silent
