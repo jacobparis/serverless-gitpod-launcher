@@ -14,7 +14,7 @@ tasks:
       mv .gitpod.template.yml .gitpod.yml
       
       # Delete git context for launcher, will be populated with new repo context
-      # rm -rf .git
+      rm -rf .git
       
       # unwrap files, hidden files, & remove containing dir
       mv launcher_temp/* .
