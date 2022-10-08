@@ -19,6 +19,8 @@ tasks:
       # unwrap files, hidden files, & remove containing dir
       mv launcher_temp/* .
       mv launcher_temp/.* . || rm -rf launcher_temp
-
-  - init: clear; npm config set loglevel silent && npm config set update-notifier false && npm i --silent @serverless/cloud@latest -g
-    command: cloud --ide=gitpod --initial
+      
+      npm config set loglevel silent \
+      && npm config set update-notifier false \
+      && npm i --silent @serverless/cloud@latest -g
+  - command: cloud --ide=gitpod --initial
