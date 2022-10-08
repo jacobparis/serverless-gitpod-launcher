@@ -20,7 +20,10 @@ tasks:
       mv launcher_temp/* .
       mv launcher_temp/.* . || rm -rf launcher_temp
       
-      npm config set loglevel silent \
-      && npm config set update-notifier false \
-      && npm i --silent @serverless/cloud@latest -g
+      
+  - init: |
+      npm config set loglevel silent
+      npm config set update-notifier false
+      npm i --silent @serverless/cloud@latest -g
+
   - command: cloud --ide=gitpod --initial
